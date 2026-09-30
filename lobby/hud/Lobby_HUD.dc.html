@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,1,0&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#2a3048}
+a{color:#38F2C0}a:hover{color:#E4E7EF}
+</style>
+</helmet>
+<div style="position:fixed;inset:0;overflow:hidden;background:#2a3048;font-family:'Chakra Petch',sans-serif;user-select:none">
+  <sc-if value="{{ showBackdrop }}" hint-placeholder-val="{{ true }}">
+    <iframe src="Lobby Buildings.html?hud=1" title="Lobby" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+  </sc-if>
+  <div style="position:absolute;left:0;top:0;width:{{ iw }}px;height:{{ ih }}px;transform:scale({{ s }});transform-origin:0 0;pointer-events:none">
+
+    <!-- top right -->
+    <div style="position:absolute;top:18px;right:22px;display:flex;gap:10px;pointer-events:auto">
+      <div style="height:46px;padding:0 16px;display:flex;align-items:center;gap:12px;background:#16181F;border:2px solid #3a3f52;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);color:#E4E7EF;font-weight:700;font-size:19px;letter-spacing:.04em">
+        <span style="font-family:'Material Symbols Rounded';font-size:26px;color:#FFB23F">emoji_events</span>
+        <span style="width:2px;height:22px;background:#3a3f52"></span>
+        <span style="font-family:'Material Symbols Rounded';font-size:26px;color:#38F2C0">campaign</span>
+        <span>UPD 1</span>
+      </div>
+    </div>
+
+    <!-- left menu -->
+    <div style="position:absolute;left:22px;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:108px 108px;gap:12px;pointer-events:auto">
+      <div onClick="{{ open.shop }}" style="grid-column:span 2;position:relative;height:72px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.04)">
+        <div style="position:absolute;inset:0;background:#FF3FA4;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);display:flex;align-items:center">
+          <div style="width:64px;height:100%;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+            <span style="font-family:'Material Symbols Rounded';font-size:40px;color:#262A35">storefront</span>
+          </div>
+          <div style="width:3px;height:100%;background:#FF3FA4"></div>
+          <div style="flex:1;text-align:center;color:#fff;font-weight:700;font-size:26px;letter-spacing:.03em">Aegis Shop</div>
+        </div>
+      </div>
+
+      <div onClick="{{ open.units }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#FFB23F;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#FFB23F;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:34px;color:#262A35">star</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#FFB23F"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Units</div>
+        <sc-if value="{{ showKeys }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:-9px;left:-9px;width:28px;height:28px;background:#16181F;border:2px solid #FFB23F;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;transform:rotate(45deg)"><span style="transform:rotate(-45deg)">H</span></div></sc-if>
+      </div>
+
+      <div onClick="{{ open.items }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#38F2C0;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#38F2C0;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:34px;color:#262A35">backpack</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#38F2C0"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Items</div>
+        <sc-if value="{{ showKeys }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:-9px;left:-9px;width:28px;height:28px;background:#16181F;border:2px solid #38F2C0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;transform:rotate(45deg)"><span style="transform:rotate(-45deg)">J</span></div></sc-if>
+      </div>
+
+      <div onClick="{{ open.quests }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#E8413A;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#E8413A;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:32px;color:#fff">receipt_long</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#E8413A"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Quests</div>
+        <sc-if value="{{ showKeys }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:-9px;left:-9px;width:28px;height:28px;background:#16181F;border:2px solid #E8413A;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;transform:rotate(45deg)"><span style="transform:rotate(-45deg)">K</span></div></sc-if>
+        <div style="position:absolute;top:-7px;right:-7px;width:24px;height:24px;border-radius:50%;background:#FF3FA4;border:2px solid #16181F;color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center">3</div>
+      </div>
+
+      <div onClick="{{ open.summon }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#8E86C9;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#8E86C9;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:34px;color:#fff">auto_awesome</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#8E86C9"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Summon</div>
+        <sc-if value="{{ showKeys }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:-9px;left:-9px;width:28px;height:28px;background:#16181F;border:2px solid #8E86C9;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;transform:rotate(45deg)"><span style="transform:rotate(-45deg)">G</span></div></sc-if>
+      </div>
+
+      <div onClick="{{ open.bonds }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#FF3FA4;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#FF3FA4;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:34px;color:#fff">link</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#FF3FA4"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Bonds</div>
+      </div>
+
+      <div onClick="{{ open.play }}" style="position:relative;width:108px;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#38F2C0;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#38F2C0;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#262A35;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <span style="font-family:'Material Symbols Rounded';font-size:46px;color:#38F2C0">rocket_launch</span>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:36px;display:flex;align-items:center;justify-content:center;color:#16181F;font-weight:700;font-size:22px;letter-spacing:.06em">PLAY</div>
+      </div>
+
+      <div onClick="{{ open.events }}" style="grid-column:span 2;position:relative;height:108px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#FFB23F;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)"></div>
+        <div style="position:absolute;left:4px;right:4px;top:4px;height:64px;background:#E4E7EF;display:flex;align-items:center;justify-content:center;clip-path:polygon(11px 0,100% 0,100% 100%,0 100%,0 11px)">
+          <div style="width:50px;height:50px;border-radius:50%;background:#FFB23F;display:flex;align-items:center;justify-content:center"><span style="font-family:'Material Symbols Rounded';font-size:34px;color:#262A35">local_fire_department</span></div>
+        </div>
+        <div style="position:absolute;left:4px;right:4px;top:68px;height:3px;background:#FFB23F"></div>
+        <div style="position:absolute;left:4px;right:4px;bottom:4px;height:33px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:20px">Events</div>
+        <div style="position:absolute;top:-8px;right:-10px;padding:2px 7px;background:#E8413A;border:2px solid #16181F;color:#fff;font-weight:700;font-size:12px;letter-spacing:.06em">LIVE</div>
+      </div>
+    </div>
+
+    <!-- right column -->
+    <div style="position:absolute;right:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;pointer-events:auto">
+      <div onClick="{{ open.pass }}" style="position:relative;width:112px;height:132px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#8E86C9;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#16181F;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+          <div style="color:#E4E7EF;font-weight:600;font-size:14px;letter-spacing:.04em">LVL 0/50</div>
+          <span style="font-family:'Material Symbols Rounded';font-size:48px;color:#8E86C9">military_tech</span>
+          <div style="color:#fff;font-weight:700;font-size:18px;line-height:1">Aegis Pass</div>
+          <div style="color:#b9b3ec;font-weight:600;font-size:13px">Season 1</div>
+        </div>
+      </div>
+      <div onClick="{{ open.waves }}" style="position:relative;width:112px;height:104px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#E4E7EF;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <span style="font-family:'Material Symbols Rounded';font-size:46px;color:#38F2C0">leaderboard</span>
+          <div style="color:#fff;font-weight:700;font-size:18px">Top Waves</div>
+        </div>
+      </div>
+      <div onClick="{{ open.profile }}" style="position:relative;width:112px;height:104px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#E4E7EF;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <span style="font-family:'Material Symbols Rounded';font-size:46px;color:#E4E7EF">badge</span>
+          <div style="color:#fff;font-weight:700;font-size:18px">Profile</div>
+        </div>
+      </div>
+      <div onClick="{{ open.calendar }}" style="position:relative;width:112px;height:104px;cursor:pointer;transition:transform .12s" style-hover="transform:scale(1.05)">
+        <div style="position:absolute;inset:0;background:#E4E7EF;clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)"></div>
+        <div style="position:absolute;inset:4px;background:#262A35;clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+          <span style="font-family:'Material Symbols Rounded';font-size:46px;color:#FFB23F">calendar_month</span>
+          <div style="color:#fff;font-weight:700;font-size:18px">Daily</div>
+        </div>
+        <div style="position:absolute;top:-7px;right:-7px;width:24px;height:24px;border-radius:50%;background:#E8413A;border:2px solid #16181F;color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center">!</div>
+      </div>
+    </div>
+
+    <!-- toast -->
+    <sc-if value="{{ toastOn }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;top:96px;left:50%;transform:translateX(-50%);min-width:360px;padding:14px 26px;background:#16181F;border:2px solid #8E86C9;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);text-align:center;pointer-events:auto">
+        <div style="color:#fff;font-weight:700;font-size:24px">{{ toastTitle }}</div>
+        <div style="color:#38F2C0;font-weight:600;font-size:16px;margin-top:2px">{{ toastSub }}</div>
+      </div>
+    </sc-if>
+
+    <!-- bottom centre -->
+    <div style="position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:auto">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div style="height:48px;padding:0 20px 0 12px;display:flex;align-items:center;gap:12px;background:#16181F;border:2px solid #3a3f52;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)">
+          <div style="width:22px;height:22px;background:#8E86C9;border:3px solid #38F2C0;transform:rotate(45deg)"></div>
+          <div style="color:#fff;font-weight:700;font-size:26px;letter-spacing:.02em">{{ shards }}</div>
+        </div>
+        <div style="height:48px;padding:0 20px 0 12px;display:flex;align-items:center;gap:12px;background:#16181F;border:2px solid #3a3f52;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)">
+          <div style="width:28px;height:28px;border-radius:50%;background:#FFB23F;border:3px solid #ffd79a;display:flex;align-items:center;justify-content:center;color:#6b4200;font-weight:700;font-size:15px">¥</div>
+          <div style="color:#FFB23F;font-weight:700;font-size:26px;letter-spacing:.02em">{{ yen }}</div>
+        </div>
+        <div onClick="{{ open.settings }}" style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#262A35;border:2px solid #3a3f52;cursor:pointer" style-hover="background:#3a3f52">
+          <span style="font-family:'Material Symbols Rounded';font-size:28px;color:#E4E7EF">settings</span>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px">
+        <sc-for list="{{ units }}" as="u" hint-placeholder-count="6">
+          <div onClick="{{ u.pick }}" style="position:relative;width:116px;height:128px;cursor:pointer;transform:{{ u.lift }};transition:transform .12s">
+            <div style="position:absolute;inset:0;background:{{ u.frame }};clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px)"></div>
+            <div style="position:absolute;inset:4px;background:{{ u.color }};clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)"></div>
+            <div style="position:absolute;left:10px;right:10px;top:10px;bottom:34px;background:repeating-linear-gradient(135deg,rgba(22,24,31,.28) 0 6px,rgba(22,24,31,.12) 6px 12px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:11px;color:#16181F;letter-spacing:.04em">unit art</div>
+            <div style="position:absolute;top:-8px;left:8px;padding:1px 7px;background:#16181F;color:#fff;font-weight:700;font-size:14px">Lvl {{ u.lvl }}</div>
+            <div style="position:absolute;left:4px;right:4px;bottom:4px;height:30px;background:#16181F;display:flex;align-items:center;justify-content:center;gap:6px">
+              <span style="color:#FFB23F;font-weight:700;font-size:19px">{{ u.cost }}</span>
+            </div>
+            <div style="position:absolute;bottom:32px;left:0;right:0;display:flex;justify-content:center;gap:3px">
+              <sc-for list="{{ u.starList }}" as="st" hint-placeholder-count="3"><div style="width:10px;height:10px;background:#fff;border:2px solid #16181F;transform:rotate(45deg)"></div></sc-for>
+            </div>
+            <sc-if value="{{ showKeys }}" hint-placeholder-val="{{ true }}"><div style="position:absolute;top:-8px;right:8px;width:20px;height:20px;background:#E4E7EF;color:#16181F;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center">{{ u.key }}</div></sc-if>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="position:relative;width:780px;height:22px;background:#16181F;border:2px solid #3a3f52;overflow:hidden">
+        <div style="position:absolute;left:0;top:0;bottom:0;width:{{ xpPct }}%;background:#38F2C0"></div>
+        <div style="position:absolute;inset:0;display:flex">
+          <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="10"><div style="flex:1;border-right:2px solid rgba(22,24,31,.55)"></div></sc-for>
+        </div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;letter-spacing:.03em;text-shadow:0 1px 0 #16181F,0 -1px 0 #16181F,1px 0 0 #16181F,-1px 0 0 #16181F">Lvl 12 · 1,433 / 1,584 XP</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hudScale&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.7,&quot;max&quot;:1.3,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;},&quot;showBackdrop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showKeys&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: window.innerWidth, h: window.innerHeight, active: null, slot: null, toast: null };
+  DEST = {
+    shop: ['Aegis Shop', 'North-west · Aegis Shop'],
+    units: ['Units', 'West · Unit Hangar'],
+    items: ['Items', 'West · Unit Hangar counter'],
+    quests: ['Quests', 'East · Quest board'],
+    summon: ['Summon', 'North · Summon Hall'],
+    bonds: ['Bonds', 'East · Bond shrine'],
+    play: ['Play', 'Choose a stage'],
+    events: ['Events', 'East · Events billboard'],
+    pass: ['Aegis Pass', 'Season 1 · Level 0 of 50'],
+    waves: ['Top Waves', 'North-east · Leaderboard tower'],
+    profile: ['Profile', 'Your stats & titles'],
+    calendar: ['Daily Rewards', 'Day 4 reward ready'],
+    settings: ['Settings', 'Audio · graphics · controls'],
+  };
+  KEYS = { h: 'units', j: 'items', k: 'quests', g: 'summon' };
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth, h: window.innerHeight });
+    this.onKey = (e) => {
+      const k = e.key.toLowerCase();
+      if (this.KEYS[k]) this.openPanel(this.KEYS[k]);
+      else if (/^[1-6]$/.test(k)) this.setState(s => ({ slot: s.slot === +k - 1 ? null : +k - 1 }));
+    };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    clearTimeout(this.t);
+  }
+  openPanel(k) {
+    clearTimeout(this.t);
+    this.setState({ toast: k });
+    this.t = setTimeout(() => this.setState({ toast: null }), 1800);
+  }
+  renderVals() {
+    const scale = this.props.hudScale ?? 1;
+    const s = (this.state.h / 1080) * scale;
+    const open = {};
+    Object.keys(this.DEST).forEach(k => { open[k] = () => this.openPanel(k); });
+    const R = [
+      { lvl: 50, cost: '¥1,400', stars: 3, color: '#FF3FA4' },
+      { lvl: 50, cost: '¥750', stars: 2, color: '#FFB23F' },
+      { lvl: 50, cost: '¥550', stars: 2, color: '#8E86C9' },
+      { lvl: 42, cost: '¥1,250', stars: 3, color: '#38F2C0' },
+      { lvl: 38, cost: '¥1,500', stars: 3, color: '#E8413A' },
+      { lvl: 27, cost: '¥725', stars: 1, color: '#8E86C9' },
+    ];
+    const units = R.map((u, i) => ({
+      ...u, key: String(i + 1),
+      starList: Array.from({ length: u.stars }, (_, j) => j),
+      frame: this.state.slot === i ? '#FFFFFF' : '#16181F',
+      lift: this.state.slot === i ? 'translateY(-8px)' : 'none',
+      pick: () => this.setState(s => ({ slot: s.slot === i ? null : i })),
+    }));
+    const d = this.state.toast && this.DEST[this.state.toast];
+    return {
+      s, iw: this.state.w / s, ih: this.state.h / s,
+      open, units,
+      ticks: Array.from({ length: 10 }, (_, i) => i),
+      xpPct: (1433 / 1584 * 100).toFixed(1),
+      shards: '1,830', yen: '124,211',
+      toastOn: !!d, toastTitle: d ? d[0] : '', toastSub: d ? d[1] : '',
+      showBackdrop: this.props.showBackdrop ?? true,
+      showKeys: this.props.showKeys ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
